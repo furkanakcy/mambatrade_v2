@@ -18,6 +18,17 @@ import pandas_ta as ta
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from datetime import datetime, timedelta
+import os
+
+os.makedirs('.streamlit', exist_ok=True)
+with open('.streamlit/config.toml', 'w') as f:
+    f.write(f"""
+[server]
+headless = true
+enableCORS = false
+port = {os.environ.get("PORT", 8501)}
+address = "0.0.0.0"
+""")
 
 # --- Uygulama Başlangıç Kurulumu ---
 def initialize_app():
